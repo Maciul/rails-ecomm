@@ -69,3 +69,5 @@ gem "devise", "~> 4.9"
 gem "font-awesome-sass", "~> 6.5.1"
 
 gem "phlex", "~> 1.11"
+
+gem "stripe", "~> 13.2"
