@@ -31,7 +31,7 @@
               <% @admin_categories.each do |c| %>
                 <tr class="bg-gray-50 border-b">
                   <td class="text-sm font-medium text-gray-800">
-                    <%= c.image.present? ? image_tag(c.image.variant(:thumb)) : image_tag("https://dummyimage.com/60x40/aba6ab/000000&text=42") %>
+                    <%= c.image.present? ? image_tag(c.image.variant(:thumb)) : image_tag("https://dummyimage.com/40x40/aba6ab/000000&text=42") %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-mediu, text-gray-800 underline">
                     <%= link_to c.name, edit_admin_category_path(c) %>

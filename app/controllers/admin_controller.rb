@@ -10,22 +10,23 @@ class AdminController < ApplicationController
       avg_sale: Order.where(created_at: Time.now.midnight..Time.now).average(:total)&.round(),
       per_sale: OrderProduct.joins(:order).where(orders: { created_at: Time.now.midnight..Time.now })&.average(:quantity)
     }
-    @orders_by_day = Order.where("created_at > ?", Time.now - 7.days).order(:created_at)
-    @orders_by_day = @orders_by_day.group_by { |order| order.created_at.to_date }
-    @revenue_by_day = @orders_by_day.map { |day, orders| [ day.strftime("%A"), orders.sum(&:total) ] }
-    if @revenue_by_day.count < 7
-      days_of_week = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
 
-      data_hash = @revenue_by_day.to_h
-      current_day = Date.today.strftime("%A")
-      current_day_index = days_of_week.index(current_day)
-      next_day_index = (current_day_index + 1) % days_of_week.length
+    start_date = Time.now - 6.days
+    end_date = Time.now
 
-      ordered_days_with_current_last = days_of_week[next_day_index..-1] + days_of_week[0...next_day_index]
+    orders_by_day = Order.where(created_at: start_date..end_date)
+                        .group("DATE(created_at)")
+                        .sum(:total)
 
-      complete_ordered_array_with_current_last = ordered_days_with_current_last.map { |day| [ day, data_hash.fetch(day, 0) ] }
+    @revenue_by_day = (start_date..end_date).map do |day|
+      revenue = orders_by_day[day.to_date] || 0
+      [ day.strftime("%A"), revenue ]
+    end.to_h
 
-      @revenue_by_day = complete_ordered_array_with_current_last
+    days_of_week = Date::DAYNAMES.rotate(Date.today.wday + 1) # Rotate to start with Monday and place current day last
+
+    @revenue_by_day = days_of_week.map do |day|
+      [ day, @revenue_by_day[day] || 0 ]
     end
   end
 end

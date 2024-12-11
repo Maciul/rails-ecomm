@@ -59,6 +59,10 @@
                 </tr>
               <%end%>
             </table>
+            <div class="flex justify-between">
+              <%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
+              <%== pagy_info(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
+            </div>
           </div>
         </div>
       </div>
@@ -116,6 +120,7 @@
                 </tr>
               <%end%>
             </table>
+            <%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
           </div>
         </div>
       </div>
