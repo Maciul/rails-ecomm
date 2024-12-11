@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: rails_ecomm_development
@@ -81,9 +80,9 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: rails_ecomm_production
-    username: rails_ecomm
-    password: <%= ENV["RAILS_ECOMM_DATABASE_PASSWORD"] %>
+    database: <%= Rails.application.credentials.dig(:heroku, :database) %>
+    username: <%= Rails.application.credentials.dig(:heroku, :user) %>
+    password: <%= Rails.application.credentials.dig(:heroku, :password) %>
   cache:
     <<: *primary_production
     database: rails_ecomm_production_cache

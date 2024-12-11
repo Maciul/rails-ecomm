@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class Admin::CategoriesTest < ApplicationSystemTestCase
   setup do
-    @admin_category = admin_categories(:one)
+    @admin_category = categories(:one)
   end
 
   test "visiting the index" do
