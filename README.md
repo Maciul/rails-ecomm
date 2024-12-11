@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Little Jamon Shop
 
-Things you may want to cover:
+This is an ecommerce site for the Little Jamon Shop.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+URL: https://young-headland-28514-1c119e72e828.herokuapp.com/
