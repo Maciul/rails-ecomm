@@ -80,6 +80,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    url: <%= Rails.application.credentials.dig(:heroku, :url) %>
     database: <%= Rails.application.credentials.dig(:heroku, :database) %>
     username: <%= Rails.application.credentials.dig(:heroku, :user) %>
     password: <%= Rails.application.credentials.dig(:heroku, :password) %>
