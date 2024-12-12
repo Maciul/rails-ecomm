@@ -5,7 +5,7 @@
     <div class="flex w-full justify-between">
       <%= render(StatComponent.new(title: "Revenue", value: (@quick_stats[:revenue]/100.0).to_s)) %>
       <%= render(StatComponent.new(title: "Total Sales", value: @quick_stats[:sales].to_s)) %>
-      <%= render(StatComponent.new(title: "Average Sale", value: @quick_stats[:avg_sale] || 0 )) %>
+      <%= render(StatComponent.new(title: "Average Sale", value: (@quick_stats[:avg_sale]/100).to_s || 0 )) %>
       <%= render(StatComponent.new(title: "Items/Sale", value: @quick_stats[:per_sale].to_i)) %>
     </div>
   </div>

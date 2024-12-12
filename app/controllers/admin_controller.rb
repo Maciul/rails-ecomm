@@ -11,14 +11,15 @@ class AdminController < ApplicationController
       per_sale: OrderProduct.joins(:order).where(orders: { created_at: Time.now.midnight..Time.now })&.average(:quantity)
     }
 
-    start_date = Time.now - 6.days
-    end_date = Time.now
+    start_date = Time.now.beginning_of_day.utc - 6.days
+    end_date = Time.now.end_of_day.utc
 
     orders_by_day = Order.where(created_at: start_date..end_date)
                         .group("DATE(created_at)")
                         .sum(:total)
 
-    @revenue_by_day = (start_date..end_date).map do |day|
+
+    @revenue_by_day = (start_date.to_date..end_date.to_date).map do |day|
       revenue = orders_by_day[day.to_date] || 0
       [ day.strftime("%A"), revenue ]
     end.to_h
