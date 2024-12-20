@@ -23,8 +23,6 @@ class CheckoutsController < ApplicationController
       }
     end
 
-    puts "line_items: #{line_items}"
-
     session = Stripe::Checkout::Session.create(
       mode: "payment",
       line_items: line_items,

@@ -3,7 +3,6 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="cart"
 export default class extends Controller {
   initialize() {
-    console.log("cart controller initialized");
     const cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       return;
@@ -13,11 +12,13 @@ export default class extends Controller {
     for (let i = 0; i < cart.length; i++) {
       const item = cart[i];
       total += item.price * item.quantity;
+
       const div = document.createElement("div");
       div.classList.add("mt-2");
       div.innerText = `Item: ${item.name} - $${item.price / 100.0} - Size: ${
         item.size
       } - Quantity: ${item.quantity}`;
+
       const deleteButton = document.createElement("button");
       deleteButton.innerText = "Remove";
       console.log("item.id: ", item.id);
@@ -30,6 +31,7 @@ export default class extends Controller {
         "py-1",
         "ml-2"
       );
+
       deleteButton.addEventListener("click", this.removeFromCart);
       div.appendChild(deleteButton);
       this.element.prepend(div);
@@ -37,6 +39,7 @@ export default class extends Controller {
 
     const totalEl = document.createElement("div");
     totalEl.innerText = `Total: $${total / 100.0}`;
+
     let totalContainer = document.getElementById("total");
     totalContainer.appendChild(totalEl);
   }
@@ -50,6 +53,7 @@ export default class extends Controller {
     const cart = JSON.parse(localStorage.getItem("cart"));
     const values = JSON.parse(event.target.value);
     const { id, size } = values;
+
     const index = cart.findIndex(
       (item) => item.id === id && item.size === size
     );
@@ -85,6 +89,7 @@ export default class extends Controller {
         response.json().then((body) => {
           const errorEl = document.createElement("div");
           errorEl.innerText = `There was an error processing your order. ${body.error}`;
+
           let errorContainer = document.getElementById("errorContainer");
           errorContainer.appendChild(errorEl);
         });
