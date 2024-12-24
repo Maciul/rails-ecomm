@@ -2,8 +2,33 @@
   <h1>Cart Page</h1>
   <div id="errorContainer"></div>
   <div data-controller="cart">
+    <ul data-cart-target="cartItems">
+    </ul>
     <div class="mt-4 font-medium" id="total"></div>
     <button class="mt-6 py-2 px-4 bg-gray-500 hover:bg-gray-600 rounded text-white" data-action="click->cart#checkout">Checkout</button>
     <button class="py-2 px-4 bg-gray-500 hover:bg-gray-600 rounded text-white" data-action="click->cart#clear">Clear Cart</button>
+    <template data-cart-target="cartItemTemplate">
+      <div class="flex justify-between items-center border-b border-gray-200 py-4">
+        <div class="w-full grid grid-cols-5 gap-4">
+          <img id="itemImage" src="" alt="" class="w-20 h-20 object-cover rounded">
+          <div>
+            <div class="font-medium" id="name"></div>
+            <div class="text-gray-500" id="description"></div>
+          </div>
+          <div>
+            <div class="text-gray-500" id="quantity">
+            </div>
+          </div>
+          <div>
+            <div class="text-gray-500" id="price"></div>
+          </div>
+          <div>
+            <button class="bg-gray-500 rounded text-white px-2 py-1ml-2" id="removeItem">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </div>

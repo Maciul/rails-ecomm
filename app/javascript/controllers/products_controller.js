@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = { size: String, product: Object };
 
   addToCart() {
+    console.log(this.productValue);
     const cart = localStorage.getItem("cart");
     if (cart) {
       const cartArray = JSON.parse(cart);
@@ -33,6 +34,7 @@ export default class extends Controller {
         price: this.productValue.price,
         size: this.sizeValue,
         quantity: 1,
+        image_url: this.productValue.image_url,
       });
       localStorage.setItem("cart", JSON.stringify(cartArray));
     }
