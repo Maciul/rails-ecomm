@@ -21,11 +21,13 @@ This project demonstrates a full-stack approach with a focus on efficient order 
 ## Technologies Used
 
 - **Ruby on Rails:** Backend framework for building the application logic and API.
+- **Devise:** Flexible authentication solution for Rails, providing secure user registration and login functionality for admin users.
 - **Turbo Frames:** Enhance user experience with dynamic page updates and seamless navigation within the admin panel.
 - **Stripe API:** Secure payment processing and order management.
 - **Stimulus.js:** JavaScript framework for adding interactivity to the frontend.
 - **LocalStorage:** Efficiently manage the shopping cart data on the client-side.
 - **Chart.js:** Create interactive and visually appealing charts for the admin dashboard.
+- **Tailwind CSS:** Utility-first CSS framework for rapidly building a modern and responsive user interface.
 - **PostgreSQL:** Relational database for storing product, order, and user data.
 - **Heroku:** Cloud platform for deploying and hosting the application.
 
@@ -45,5 +47,6 @@ This project demonstrates a full-stack approach with a focus on efficient order 
 
 - **User Authentication:** Implement user accounts for order history and personalized experiences.
 - **Advanced Search:** Allow users to filter products by various criteria.
+- **Tables with Turbo Frames:** Table component with row inline editing.
 - **Product Reviews:** Enable customers to leave reviews and ratings for products.
 - **Email Notifications:** Send order confirmation and shipping updates via email.
