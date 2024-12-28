@@ -2,6 +2,8 @@
 
 This project demonstrates a full-stack approach with a focus on efficient order management, secure payment integration, and a dynamic user interface.
 
+![Screenshot 2024-12-28 at 6 20 23 PM](https://github.com/user-attachments/assets/6f748fdd-57dd-4b25-852b-ec791e19e935)
+
 ## Features
 
 **Admin Panel:**
