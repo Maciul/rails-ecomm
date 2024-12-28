@@ -7,6 +7,16 @@ class Admin::OrdersController < AdminController
     @fulfilled_pagy, @fulfilled_orders = pagy(Order.where(fulfilled: true).order(created_at: :asc), page_param: :page_fulfilled)
   end
 
+  def unfulfilled
+    @not_fulfilled_pagy, @not_fulfilled_orders = pagy(Order.where(fulfilled: false).order(created_at: :asc))
+    render partial: "orders_table", locals: { orders: @not_fulfilled_orders, pagy: @not_fulfilled_pagy }
+  end
+
+  def fulfilled
+    @fulfilled_pagy, @fulfilled_orders = pagy(Order.where(fulfilled: true).order(created_at: :asc), page_param: :page_fulfilled)
+    render partial: "orders_table", locals: { orders: @fulfilled_orders, pagy: @fulfilled_pagy }
+  end
+
   # GET /admin/orders/1 or /admin/orders/1.json
   def show
   end

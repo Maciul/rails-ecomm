@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :orders
+    resources :orders do
+      collection do
+        get :unfulfilled
+        get :fulfilled
+      end
+    end
     resources :stocks
     resources :products do
       resources :stocks
@@ -31,6 +36,7 @@ Rails.application.routes.draw do
 
   get "admin" => "admin#index"
   get "cart" => "carts#show"
+
   post "checkout" => "checkouts#create"
 
   get "success" => "checkouts#success"

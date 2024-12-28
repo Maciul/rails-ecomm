@@ -1,0 +1,51 @@
+<%= turbo_frame_tag "orders" do %>
+  <table class="min-w-full overflow-x-scroll">
+    <thead class="bg-white border-b">
+      <tr>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          ID
+        </th>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          Customer Email
+        </th>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          Total
+        </th>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          Address 
+        </th>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          Fullfilled
+        </th>
+        <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+          &nbsp
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.each do |o| %>
+        <tr class="bg-gray-50 border-b">
+          <td class="px-6 text-sm font-medium text-gray-800">
+            <%= o.id %>
+          </td>
+          <td class="px-6 text-sm font-medium text-gray-800">
+            <%= o.customer_email %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+            $<%= link_to o.total, edit_admin_order_path(o) %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+            <%= o.address %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+            <%= o.fulfilled%>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+            <%= link_to "Show Order", admin_order_path(o) %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <%== pagy_nav(pagy) if pagy.pages > 1 %>
+<% end %>

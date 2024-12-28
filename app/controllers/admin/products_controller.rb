@@ -4,7 +4,7 @@ class Admin::ProductsController < AdminController
   # GET /admin/products or /admin/products.json
   def index
     if params[:query].present?
-      @pagy, @admin_products = pagy(Product.where("name LIKE ?", "%#{params[:query]}%"))
+      @pagy, @admin_products = pagy(Product.where("name ILIKE ?", "%#{params[:query]}%"))
     else
       @pagy, @admin_products = pagy(Product.all)
     end
