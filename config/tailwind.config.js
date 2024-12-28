@@ -11,7 +11,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        sans: [
+          "Playfair Display",
+          "Inter var",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        serif: ["Lato", ...defaultTheme.fontFamily.serif],
+      },
+      boxShadow: {
+        custom:
+          "0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149)",
       },
     },
   },

@@ -3,6 +3,7 @@ class Category < ApplicationRecord
 
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [ 60, 40 ]
+    attachable.variant :small, resize_to_limit: [ 200, 200 ]
     attachable.variant :medium, resize_to_limit: [ 512, 512 ]
   end
 
