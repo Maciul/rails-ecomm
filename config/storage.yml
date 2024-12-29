@@ -20,7 +20,6 @@ google:
   project: glossy-chimera-443817-i3
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: rails_little_jamon_shop
-  path: images/
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage
