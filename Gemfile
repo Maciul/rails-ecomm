@@ -76,6 +76,6 @@ gem "stripe", "~> 13.2"
 
 gem "pagy", "~> 9.3"
 
-gem "view_component", "~> 3.20"
+gem "view_component", "~> 3.21"
 
 gem "google-cloud-storage"
