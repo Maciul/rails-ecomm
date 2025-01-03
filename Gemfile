@@ -72,7 +72,7 @@ gem "font-awesome-sass", "~> 6.5.1"
 
 gem "phlex", "~> 1.11"
 
-gem "stripe", "~> 13.2"
+gem "stripe", "~> 13.3"
 
 gem "pagy", "~> 9.3"
 
